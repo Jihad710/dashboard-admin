@@ -25,12 +25,12 @@ export const PUT = async (request) => {
 			const body = await request.json();
 			const db = await DbConnect();
 			const adminCollection = db.collection('admins');
-			const filter = { _id: new ObjectId(body.id) };
+			const filter = { _id: new ObjectId(body?.id) };
 			const option = { upsert: true };
-
+			console.log(body);
 			// Toggle the "role" field between "admin" and "none"
 			const update = {
-				$set: { role: body.role === 'admin' ? 'none' : 'admin' }
+				$set: { role: body?.role }
 			};
 
 			// Perform the update

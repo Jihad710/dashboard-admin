@@ -1,63 +1,50 @@
 "use client";
 import React from "react";
-import {
-    FaBarsStaggered,
-    FaClipboardList,
-    FaUserGraduate,
-} from "react-icons/fa6";
-import { FaUsersCog } from "react-icons/fa";
-import { MdEditDocument, MdReviews } from "react-icons/md";
-import { BiArrowFromRight, BiSolidBarChartSquare } from "react-icons/bi";
-import { HiUserGroup } from "react-icons/hi";
-import { PiUserListFill } from "react-icons/pi";
-import UseLawyerAppointment from "@/hooks/UseLawyerAppointment";
-import UseBlogs from "@/hooks/UseBlogs";
-import UseLawyer from "@/hooks/UseLawyer";
-import UseReviews from "@/hooks/UseReviews";
 import UseOrders from "@/hooks/UseOrders";
+import UseAdmins from "@/hooks/UseAdmins";
 const Dashboard = () => {
-    const { appointments } = UseOrders();
-    const { lawyerAppointments } = UseLawyerAppointment();
-    const [allBlogs] = UseBlogs();
-    const { lawyers } = UseLawyer();
-    const [reviews] = UseReviews();
+    const { orders } = UseOrders();
+    const { admins } = UseAdmins();
+    const totalAdmins = admins?.filter((admin) => admin.role == "admin");
+    const totalEditor = admins?.filter((admin) => admin.role == "editor");
     return (
         <div>
             <div className="grid grid-cols-6 gap-5">
                 <div className="bg-green-600 col-span-3 text-white p-10 rounded-tl-2xl rounded-br-2xl text-center">
                     <p className="text-7xl mb-5 font-bold">
-                        {appointments ? (
-                            appointments?.length
+                        {orders ? (
+                            orders?.length
                         ) : (
                             <span className="loading loading-infinity loading-lg"></span>
                         )}
                     </p>
-                    <h2 className="text-2xl"> General Appointment</h2>
+                    <h2 className="text-2xl">Total Orders</h2>
                 </div>
                 <div className="bg-blue-600 col-span-3 text-white p-10 rounded-tl-2xl rounded-br-2xl text-center">
                     <p className="text-7xl mb-5 font-bold">
-                        {lawyerAppointments ? (
-                            lawyerAppointments?.length
+                        {totalAdmins ? (
+                            totalAdmins?.length
                         ) : (
                             <span className="loading loading-infinity loading-lg"></span>
                         )}
                     </p>
-                    <h2 className="text-2xl"> Lawyer Appointment</h2>
+                    <h2 className="text-2xl"> Total Admins</h2>
                 </div>
                 <div className="bg-emerald-600 col-span-2 text-white p-10 rounded-tl-2xl rounded-br-2xl text-center">
                     <p className="text-7xl mb-5 font-bold">
-                        {lawyers ? (
-                            lawyers?.length
+                        {totalEditor ? (
+                            totalEditor?.length
                         ) : (
                             <span className="loading loading-infinity loading-lg"></span>
                         )}
                     </p>
-                    <h2 className="text-2xl"> Total Lawyer </h2>
+                    <h2 className="text-2xl"> Total Editors </h2>
                 </div>
                 <div className="bg-teal-500 col-span-2 text-white p-10 rounded-tl-2xl rounded-br-2xl text-center">
                     <p className="text-7xl mb-5 font-bold">
-                        {allBlogs ? (
-                            allBlogs?.length
+                        {/* Todo: make dynamic */}
+                        {admins ? (
+                            0
                         ) : (
                             <span className="loading loading-infinity loading-lg"></span>
                         )}
@@ -66,8 +53,9 @@ const Dashboard = () => {
                 </div>
                 <div className="bg-purple-700 col-span-2 text-white p-10 rounded-tl-2xl rounded-br-2xl text-center">
                     <p className="text-7xl mb-5 font-bold">
-                        {reviews ? (
-                            reviews?.length
+                        {/* Todo: make dynamic */}
+                        {admins ? (
+                            0
                         ) : (
                             <span className="loading loading-infinity loading-lg"></span>
                         )}

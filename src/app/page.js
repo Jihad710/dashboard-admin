@@ -4,35 +4,45 @@ import { useRouter } from "next/navigation";
 import { app } from "@/Firebase/Firebase.config";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import UseAdmins from "@/hooks/UseAdmins";
+import Swal from "sweetalert2";
+import { UserAuth } from "@/Providers/AuthProvider";
 
 const RedirectToHome = () => {
-    const [user, setUser] = useState(null);
-    const [userLoading, setUserLoading] = useState(true);
-    const { admins, ReFetch, loading } = UseAdmins();
-    const isAdmin = admins?.find((admin) => admin.email == user?.email);
+    // const [user, setUser] = useState(null);
+    const {user,loading} = UserAuth()
+    // const [userLoading, setUserLoading] = useState(true);
+    const { admins, ReFetch, loading:adminLoading } = UseAdmins();
+    const isAdmin = admins?.find(
+        (admin) => admin.email == user?.email && admin.role == "admin"
+    );
+    const isEditor = admins?.find(
+        (admin) => admin.email == user?.email && admin.role == "editor"
+    );
     // console.log(userLoading);
-    const auth = getAuth(app);
     const router = useRouter();
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-            // if (currentUser) {
-                setUser(currentUser);
-                setUserLoading(false);
-            // }
-        });
-        return () => {
-            return unsubscribe();
-        };
-    }, [router, auth]);
-    if (user) {
-        if (isAdmin) {
+    if (user && !adminLoading) {
+        if (isAdmin || isEditor) {
             router.push("/dashboard");
+        } else {
+            Swal.fire({
+                title: "Secure Path",
+                text: "You have no permission to enter here!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Login with valid account",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    router.push("/login");
+                }
+            });
         }
-    }else if(!userLoading){
+    } else if (!loading && !adminLoading) {
         router.push("/login");
     }
 
-    if (loading && !user) {
+    if (adminLoading && !user) {
         return <p className="text-xl">Loading......</p>;
     }
     return (

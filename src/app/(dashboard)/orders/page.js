@@ -22,12 +22,7 @@ const OrdersPage = () => {
             }
         })();
     }, [sortingText, sortingMode]);
-    const handleSorting = (e) => {
-        setSortingText(e.target.value);
-    };
-    const handleSortingMode = (e) => {
-        setSortingMode(e.target.value);
-    };
+
     return (
         <div>
             <>
