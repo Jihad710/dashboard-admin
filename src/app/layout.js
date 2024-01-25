@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-	title: 'Auth | LegalCO',
+	title: 'Auth | Insaaftech',
 	description:
 		"LegalCO's Dashboard offers unparalleled legal insights and data analysis tools. Stay ahead with our intuitive legal analytics platform. Make data-driven decisions effortlessly. Explore now"
 };

@@ -35,7 +35,7 @@ const AdminNavbar = ({ children }) => {
                 {/* Page content here */}
                 <div className="lg:hidden flex items-center justify-between w-full px-6 py-2 border-b shadow-md text-[#225559]">
                     <div className="text-2xl font-bold">
-                        <Link href="/dashboard">LegalCo</Link>
+                        <Link href="/dashboard">Insaaftech</Link>
                     </div>
                     <label htmlFor="my-drawer-2" className="drawer-button">
                         <FaBarsStaggered />
@@ -47,7 +47,7 @@ const AdminNavbar = ({ children }) => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu w-60 text-base-content min-h-full p-4 space-y-3 bg-white">
                     <div className="text-4xl p-4 text-[#225559] font-bold border-b border-gray-300">
-                        <Link href="/dashboard">LegalCo</Link>
+                        <Link href="/dashboard">insaaftech</Link>
                     </div>
 
                     <li>

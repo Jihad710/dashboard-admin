@@ -27,7 +27,7 @@ const OrdersPage = () => {
         <div>
             <>
                 <h1 className="md:text-2xl mb-5 text-xl font-bold">
-                    All General Appointment
+                    All Products Order
                 </h1>
                 <div className="border-b flex justify-end border-gray-100">
                     <div className="flex items-center ">
