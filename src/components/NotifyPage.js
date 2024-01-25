@@ -19,8 +19,8 @@ const NotifyPage = () => {
 					the dashboard.
 				</p>
 				<p className="text-lg mb-6">If you have any urgent concerns, feel free to contact us:</p>
-				<Link href="mailto:legalco668@gmail.com" className="text-xl hover:text-indigo-200 transition duration-300">
-					legalco668@gmail.com
+				<Link href="mailto:" className="text-xl hover:text-indigo-200 transition duration-300">
+					
 				</Link>
 				<button className="mt-3 block mx-auto" onClick={handleLogout}>
 					Log Out

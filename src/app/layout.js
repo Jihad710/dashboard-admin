@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
 	title: 'Auth | Insaaftech',
 	description:
-		"LegalCO's Dashboard offers unparalleled legal insights and data analysis tools. Stay ahead with our intuitive legal analytics platform. Make data-driven decisions effortlessly. Explore now"
+		"We are a company that is dedicated to helping businesses achieve their goals through innovative solutions and exceptional customer service."
 };
 
 export default function RootLayout({ children }) {
